@@ -24,6 +24,19 @@ const ConfigFile = __importStar(require("./config"));
 const client = new Discord.Client();
 const prefix = ConfigFile.Config.prefix;
 const token = ConfigFile.Config.token;
+const express = require('express');
+const app = express();
+app.use(express.static('public'));
+const http = require('http');
+var _server = http.createServer(app);
+app.get('/', (_request, response) => {
+    response.sendFile(__dirname + "/index.html");
+    console.log(Date.now() + " Ping Received");
+    response.sendStatus(200);
+});
+const listener = app.listen(process.env.PORT, () => {
+    console.log('Your app is listening on port ' + listener.address().port);
+});
 let commands = [];
 loadCommands(`${__dirname}/commands`);
 client.once("ready", () => {

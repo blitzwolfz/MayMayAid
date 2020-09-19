@@ -20,6 +20,7 @@
   "dependencies": {
     "@types/dotenv": "^8.2.0",
     "discord.js": "^12.3.0",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "expressjs": "^1.0.1"
   }
 }

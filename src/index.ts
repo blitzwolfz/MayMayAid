@@ -5,6 +5,25 @@ const client = new Discord.Client();
 const prefix = ConfigFile.Config.prefix;
 const token = ConfigFile.Config.token;
 
+const express = require('express');
+const app = express();
+app.use(express.static('public'));
+const http = require('http');
+//@ts-ignore
+var _server = http.createServer(app);
+
+
+app.get('/', (_request: any, response: any) => {
+  response.sendFile(__dirname + "/index.html");
+  console.log(Date.now() + " Ping Received");
+  response.sendStatus(200);
+});
+
+
+const listener = app.listen(process.env.PORT, () => {
+  console.log('Your app is listening on port ' + listener.address().port);
+});
+
 let commands: CommandStruct[] = [];
 
 //dirname in this case is set to ..\src\
