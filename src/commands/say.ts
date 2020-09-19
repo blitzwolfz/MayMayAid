@@ -12,6 +12,19 @@ export default class say implements CommandStruct{
     async runCommand(args: string[], message: Discord.Message, client: Discord.Client){
         let say = args.join(" ");
 
+        if(message.mentions.users.first()?.id === "569374429218603019"){
+            return message.reply("stfu and Yeet your vegetabales")
+        }
+
+
+        if (say.match(/@(everyone|here)/)){
+            for(let e = 0; e < 10; e++){
+                message.reply(`you can't do mass ping`)
+            }
+
+            return;
+        }
+
         try{
             await message.delete().catch();
         } catch {
